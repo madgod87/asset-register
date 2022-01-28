@@ -30,13 +30,26 @@ class AssetSpider(scrapy.Spider):
         schemecode = response.request.meta['scheme_code']
         assetcategory = response.request.meta['asset_category']
         schemename = response.request.meta['scheme_name']
-        sanctiondate = response.xpath("//table[3]//tr[6]/td[1]/nobr/p/font[2]/text()").get()
-        wage = response.xpath("//table[3]//tr[10]/td/table//tr[2]/td[1]/font/text()").get()
-        semiskilled = response.xpath("//table[3]//tr[10]/td/table//tr[2]/td[2]/font/text()").get()
-        skilled = response.xpath("//table[3]//tr[10]/td/table//tr[2]/td[3]/font/text()").get()
-        material = response.xpath("//table[3]//tr[10]/td/table//tr[2]/td[4]/font/a/text()").get()
-        contingency = response.xpath("//table[3]//tr[10]/td/table//tr[2]/td[5]/font/text()").get()
-        total = response.xpath("//table[3]//tr[10]/td/table//tr[2]/td[6]/font/text()").get()
+
+# Sanitized Scheme Data
+        # sanctiondate = response.xpath("//table[3]//tr[6]/td[1]/nobr/p/font[2]/text()").get()
+        # wage = response.xpath("//table[3]//tr[10]/td/table//tr[2]/td[1]/font/text()").get()
+        # semiskilled = response.xpath("//table[3]//tr[10]/td/table//tr[2]/td[2]/font/text()").get()
+        # skilled = response.xpath("//table[3]//tr[10]/td/table//tr[2]/td[3]/font/text()").get()
+        # material = response.xpath("//table[3]//tr[10]/td/table//tr[2]/td[4]/font/a/text()").get()
+        # contingency = response.xpath("//table[3]//tr[10]/td/table//tr[2]/td[5]/font/text()").get()
+        # total = response.xpath("//table[3]//tr[10]/td/table//tr[2]/td[6]/font/text()").get()
+
+
+# Other Scheme Data
+        sanctiondate = response.xpath("//table[3]//tr[7]/td[1]/nobr/p/font[2]/text()").get()
+        wage = response.xpath("//table[3]//tr[11]/td/table//tr[2]/td[1]/font/text()").get()
+        semiskilled = response.xpath("//table[3]//tr[11]/td/table//tr[2]/td[2]/font/text()").get()
+        skilled = response.xpath("//table[3]//tr[11]/td/table//tr[2]/td[3]/font/text()").get()
+        material = response.xpath("//table[3]//tr[11]/td/table//tr[2]/td[4]/font/a/text()").get()
+        contingency = response.xpath("//table[3]//tr[11]/td/table//tr[2]/td[5]/font/text()").get()
+        total = response.xpath("//table[3]//tr[11]/td/table//tr[2]/td[6]/font/text()").get()
+        
        # contigency = contingency.replace(u'\xa0', u' ')
         yield {
             'assetid': assetid,
